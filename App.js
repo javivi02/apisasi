@@ -4,6 +4,7 @@ import cors from 'cors'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import * as path from 'path'
+import { sequelize } from './src/bbdd/connection.js'
 
 // initialization
 const app = express()
@@ -16,6 +17,14 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
+//conexion a la base de datos
+try {
+  await sequelize.authenticate()
+  console.log('Connection has been established successfully.')
+} catch (error) {
+  console.error('Unable to connect to the database:', error)
+}
 
 // static files
 app.use(express.static(join(__dirname, 'public')))
