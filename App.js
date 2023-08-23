@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import * as path from 'path'
 import { sequelize } from './src/bbdd/connection.js'
+import autenticacion from './src/routes/autenticacion.route.js'
 
 // initialization
 const app = express()
@@ -25,6 +26,9 @@ try {
 } catch (error) {
   console.error('Unable to connect to the database:', error)
 }
+
+// routes
+app.use(autenticacion)
 
 // static files
 app.use(express.static(join(__dirname, 'public')))
