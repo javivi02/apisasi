@@ -5,14 +5,14 @@ import { generateToken } from '../utils/jwt.handle.js'
 
 const Usuarios = modeloUsuarios(sequelize)
 
-const loginUser = async ({ Usuario, Contrasena }) => {
+const loginUser = async ({ Usuario, Contraseña }) => {
 
   const isCheckUser = await Usuarios.findAll({ where: { Usuario } })
   if (isCheckUser.length === 0) return (1)
 
-  const passHash = isCheckUser[0].Contrasena
+  const passHash = isCheckUser[0].Contraseña
 
-  const isCorrect = await verified(Contrasena, passHash)
+  const isCorrect = await verified(Contraseña, passHash)
   if (!isCorrect) return (2)
 
   return {

@@ -13,7 +13,7 @@ export const modeloUsuarios = (sequelize) => {
       type: DataTypes.STRING(50),
       allowNull: true
     },
-    Contrasena: {
+    Contraseña: {
       type: DataTypes.STRING(60),
       allowNull: true
     },
