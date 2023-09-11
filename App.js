@@ -6,6 +6,7 @@ import { dirname, join } from 'path'
 import * as path from 'path'
 import { sequelize } from './src/bbdd/connection.js'
 import autenticacion from './src/routes/autenticacion.route.js'
+import { PORT } from './src/config.js'
 
 // initialization
 const app = express()
@@ -34,8 +35,8 @@ app.use(autenticacion)
 app.use(express.static(join(__dirname, 'public')))
 
 // para evitar el error al recargar la página en una ruta virtual
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public/index.html'), function(err) {
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'), function (err) {
     if (err) {
       res.status(500).send(err)
     }
@@ -43,5 +44,5 @@ app.get('/*', function(req, res) {
 })
 
 // starting the server web and Rest API
-app.listen(3333)
-console.log('Server on port ...', 3333)
+app.listen(PORT)
+console.log('Server on port ...', PORT)
