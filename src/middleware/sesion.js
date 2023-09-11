@@ -1,4 +1,5 @@
 import { verifyToken } from '../utils/jwt.handle.js'
+import { logger } from '../utils/logs.js'
 
 const checkSession = (req, res, next) => {
   try {
@@ -15,6 +16,7 @@ const checkSession = (req, res, next) => {
 
   } catch (e) {
     //console.log(e.message)
+    logger.error(e.message.toString())
     res.status(200)
     res.send(e.message.toString().toUpperCase())
   }
