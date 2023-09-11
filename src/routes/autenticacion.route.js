@@ -6,6 +6,6 @@ import { checkSession } from '../middleware/sesion.js'
 const router = Router()
 
 router.post('/api/login', logMiddlewareLogin, loginController)
-router.get('/api/check', checkSession, checkController)
+router.post('/api/check', checkSession, checkController)
 
 export default router

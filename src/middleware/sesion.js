@@ -2,6 +2,9 @@ import { verifyToken } from '../utils/jwt.handle.js'
 import { logger } from '../utils/logs.js'
 
 const checkSession = (req, res, next) => {
+
+  const { Usuario } = req.body
+
   try {
     const jwtByUser = req.headers.authorization || ''
     const jwt = jwtByUser.split(' ').pop()
@@ -15,8 +18,10 @@ const checkSession = (req, res, next) => {
     next()
 
   } catch (e) {
+
     //console.log(e.message)
-    logger.error(e.message.toString())
+    logger.warn(`El usuario ${Usuario} ->`, e.message.toString().toUpperCase())
+    // logger.error(e.message.toString())
     res.status(200)
     res.send(e.message.toString().toUpperCase())
   }

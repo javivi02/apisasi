@@ -17,7 +17,7 @@ export const loginController = async (req, res) => {
       return res.send('La contraseña no es correcta')
     }
 
-    logger.info('Detalle :', resultado)
+    logger.info('Login :', resultado)
 
     res.send(resultado)
 
@@ -31,9 +31,10 @@ export const loginController = async (req, res) => {
 
 export const checkController = async (req, res) => {
 
-  const { id } = req.user
+  const { Usuario } = req.body
+  if (Usuario === undefined) return
 
-  logger.info(`El usuario con id ${id} tiene un token correcto`)
+  logger.info(`El usuario ${Usuario} tiene un token correcto`)
   res.status(200)
   res.send('Usuario con token correcto')
 }
