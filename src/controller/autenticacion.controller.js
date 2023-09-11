@@ -33,7 +33,7 @@ export const checkController = async (req, res) => {
 
   const { id } = req.user
 
-  logger.info(`Usuario con id ${id} tiene un token correcto`)
+  logger.info(`El usuario con id ${id} tiene un token correcto`)
   res.status(200)
   res.send('Usuario con token correcto')
 }
