@@ -18,7 +18,8 @@ const loginUser = async ({ Usuario, Contraseña }) => {
   return {
     Usuario: isCheckUser[0].Usuario,
     islogged: true,
-    token: generateToken(isCheckUser[0].UsuariosID)
+    token: generateToken(isCheckUser[0].UsuariosID),
+    isExpired: false
   }
 
 }
