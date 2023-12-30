@@ -7,6 +7,8 @@ import * as path from 'path'
 import { sequelize } from './src/bbdd/connection.js'
 import autenticacion from './src/routes/autenticacion.route.js'
 import { PORT } from './src/config.js'
+import fs from 'fs'
+import https from 'https'
 
 // initialization
 const app = express()
@@ -43,6 +45,18 @@ app.get('/*', function (req, res) {
   })
 })
 
-// starting the server web and Rest API
+/*// starting the server web and Rest API
 app.listen(PORT)
-console.log('Server on port ...', PORT)
+console.log('Server on port ...', PORT)*/
+
+const options = {
+  key: fs.readFileSync(path.join(__dirname, 'localhost-key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'localhost.pem')),
+}
+
+// Create HTTPS server
+const server = https.createServer(options, app)
+
+server.listen(PORT, () => {
+  console.log(`App listening on https://localhost:${PORT}`)
+})
