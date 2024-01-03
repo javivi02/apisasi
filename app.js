@@ -36,14 +36,14 @@ app.use(autenticacion)
 // static files
 app.use(express.static(join(__dirname, 'public')))
 
-// para evitar el error al recargar la página en una ruta virtual
-app.get('/*', function (req, res) {
+/*// para evitar el error al recargar la página en una ruta virtual
+app.get('/!*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public/index.html'), function (err) {
     if (err) {
       res.status(500).send(err)
     }
   })
-})
+})*/
 
 /*// starting the server web and Rest API
 app.listen(PORT)
@@ -58,5 +58,5 @@ const options = {
 const server = https.createServer(options, app)
 
 server.listen(PORT, () => {
-  console.log(`App listening on https://localhost:${PORT}`)
+  console.log(`App listening in https, on port ... ${PORT}`)
 })
