@@ -21,6 +21,8 @@ services:
 
   app:
     container_name: backend_apiLogin
+    depends_on:
+      - db
     build:
       context: .
       dockerfile: Dockerfile
