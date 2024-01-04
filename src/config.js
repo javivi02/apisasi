@@ -15,6 +15,5 @@ export const DB = {
   database: process.env.DB_DATABASE ?? 'bbdd_soporte',
   username: process.env.DB_USER ?? 'jga',
   password: process.env.DB_PASSWORD ?? 'j4v13r',
-  port: process.env.DB_LOCAL_PORT ?? 3306,
   dialect: 'mysql' /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 }
