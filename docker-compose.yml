@@ -37,6 +37,6 @@ services:
           memory: 1G
 
 
-volumes:
-  mariadb:
-    external: true
+#volumes:
+#  mariadb:
+#    external: true
